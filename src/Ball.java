@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Ball {
 
-
+//test change
     private Color color;
     private int stx, sty;
     private int wid, hei;
