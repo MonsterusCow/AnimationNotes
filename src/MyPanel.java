@@ -40,17 +40,14 @@ public class MyPanel extends JPanel {
 
     public boolean checkTop(int in1, int in2) {
         boolean checker = false;
-        //(balls.get(in1).getStx()+balls.get(in1).getWid()/2)
         if (in1 != in2) {
-            if (((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && ((balls.get(in1).getStx() > balls.get(in2).getStx()) && (balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
+            if (((balls.get(in1).getSty()+balls.get(in1).getWid()/2) < ((balls.get(in2).getSty()+balls.get(in2).getHei()))) && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && ((balls.get(in1).getStx() > balls.get(in2).getStx()) && (balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
                 balls.get(in1).setYspeed(-(balls.get(in1).getYspeed()));
                 balls.get(in2).setYspeed(-(balls.get(in2).getYspeed()));
                 checker = true;
                 bounces++;
-
-
             } else {
-                if (((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid()) > balls.get(in2).getStx()) && ((balls.get(in1).getStx() + balls.get(in1).getWid()) < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
+                if (((balls.get(in1).getSty()+balls.get(in1).getWid()/2) < ((balls.get(in2).getSty()+balls.get(in2).getHei()))) && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid()) > balls.get(in2).getStx()) && ((balls.get(in1).getStx() + balls.get(in1).getWid()) < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
                     balls.get(in1).setYspeed(-(balls.get(in1).getYspeed()));
                     balls.get(in2).setYspeed(-(balls.get(in2).getYspeed()));
                     checker = true;
@@ -77,7 +74,7 @@ public class MyPanel extends JPanel {
     public boolean checkLeft(int in1, int in2) {
         boolean checker = false;
         if (in1 != in2) {
-            if (((balls.get(in1).getStx() < (balls.get(in2).getStx()+balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty()) < (balls.get(in2).getSty()+balls.get(in2).getHei())))){
+            if (((balls.get(in1).getStx()+balls.get(in1).getHei()/2) < (balls.get(in2).getStx()+balls.get(in2).getWid())) && ((balls.get(in1).getStx() < (balls.get(in2).getStx()+balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty()) < (balls.get(in2).getSty()+balls.get(in2).getHei())))){
                 balls.get(in1).setXspeed(-(balls.get(in1).getXspeed()));
                 balls.get(in2).setXspeed(-(balls.get(in2).getXspeed()));
                 checker = true;
