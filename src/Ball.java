@@ -9,6 +9,7 @@ public class Ball {
     private int stx, sty;
     private int wid, hei;
     private int xspeed, yspeed;
+    private Ball lasthit;
 
 
     public Ball(){
@@ -51,19 +52,19 @@ public class Ball {
 
     public void checkIfWall(){
         if ((stx+wid) >=  Main.frame.getWidth()){
-//            yspeed = (int)(Math.random() * 20)-10;
+            yspeed = (int)(Math.random() * 20)-10;
             xspeed = -xspeed;
         }
         if ((stx) <= 0){
-//            yspeed = (int)(Math.random() * 20)-10;
+            yspeed = (int)(Math.random() * 20)-10;
             xspeed = -xspeed;
         }
         if ((sty+hei) >= Main.frame.getHeight()){
-//            xspeed = (int)(Math.random() * 20)-10;
+            xspeed = (int)(Math.random() * 20)-10;
             yspeed = -yspeed;
         }
         if ((sty) <= 0){
-//            xspeed = (int)(Math.random() * 20)-10;
+            xspeed = (int)(Math.random() * 20)-10;
             yspeed = -yspeed;
         }
     }
@@ -106,6 +107,14 @@ public class Ball {
 
     public int getYspeed(){
         return yspeed;
+    }
+    public void setLastHit(Ball ball)
+    {
+        lasthit = ball;
+    }
+
+    public Ball getLastHit(){
+        return lasthit;
     }
 
 

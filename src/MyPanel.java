@@ -16,7 +16,7 @@ public class MyPanel extends JPanel {
     int[] ypol;
     Ball ball;
     int number;
-    int size = (int)(Math.random() * 25) + 25;
+    int size = (int)(Math.random() * 35) + 20;
     boolean yes;
 
 
@@ -31,8 +31,8 @@ public class MyPanel extends JPanel {
     public MyPanel() {
         setBackground(new Color(29, 102, 16));
         for (int i = 0; i < ammount; i++) {
-            balls.add(new Ball(new Color((int)(Math.random() * 254), (int)(Math.random() * 254), (int)(Math.random() * 254)), (Main.frame.getWidth() / 2) + ((int)(Math.random() * 400) - 200), (Main.frame.getHeight() / 2) + ((int)(Math.random() * 400) - 200), size, size, (int)(Math.random() * 20) - 10, (int)(Math.random() * 20) - 10));
-            size = (int)(Math.random() * 25) + 25;
+            balls.add(new Ball(new Color((int)(Math.random() * 254), (int)(Math.random() * 254), (int)(Math.random() * 254)), (Main.frame.getWidth() / 2) + ((int)(Math.random() * 900) - 450), (Main.frame.getHeight() / 2) + ((int)(Math.random() * 900) - 450), size, size, (int)(Math.random() * 20) - 10, (int)(Math.random() * 20) - 10));
+            size = (int)(Math.random() * 35) + 20;
 
 
         }
@@ -41,18 +41,22 @@ public class MyPanel extends JPanel {
     public boolean checkTop(int in1, int in2) {
         boolean checker = false;
         if (in1 != in2) {
-            if (((((balls.get(in1).getSty()+balls.get(in1).getWid()/2) < (balls.get(in1).getSty()+balls.get(in1).getHei())) && ((balls.get(in1).getSty()+balls.get(in1).getWid()/2) > (balls.get(in2).getSty()))) && (()))
-                    && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && ((balls.get(in1).getStx() > balls.get(in2).getStx()) && (balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
-                balls.get(in1).setYspeed(-(balls.get(in1).getYspeed()));
-                balls.get(in2).setYspeed(-(balls.get(in2).getYspeed()));
-                checker = true;
-                bounces++;
-            } else {
-                if (((balls.get(in1).getSty()+balls.get(in1).getWid()/2) < ((balls.get(in2).getSty()+balls.get(in2).getHei()))) && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid()) > balls.get(in2).getStx()) && ((balls.get(in1).getStx() + balls.get(in1).getWid()) < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
+//            if (balls.get(in1).getLastHit() != balls.get(in2)) {
+                if (((((balls.get(in1).getSty() + balls.get(in1).getWid() / 2) < (balls.get(in1).getSty() + balls.get(in1).getHei())) && ((balls.get(in1).getSty() + balls.get(in1).getWid() / 2) > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid() / 2) < (balls.get(in2).getStx() + balls.get(in2).getWid())) && ((balls.get(in1).getStx() + balls.get(in1).getWid() / 2) > (balls.get(in2).getStx()))))
+                        && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && ((balls.get(in1).getStx() > balls.get(in2).getStx()) && (balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
                     balls.get(in1).setYspeed(-(balls.get(in1).getYspeed()));
                     balls.get(in2).setYspeed(-(balls.get(in2).getYspeed()));
                     checker = true;
                     bounces++;
+                    balls.get(in1).setLastHit(balls.get(in2));
+                } else {
+                    if (((((balls.get(in1).getSty() + balls.get(in1).getWid() / 2) < (balls.get(in1).getSty() + balls.get(in1).getHei())) && ((balls.get(in1).getSty() + balls.get(in1).getWid() / 2) > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid() / 2) < (balls.get(in2).getStx() + balls.get(in2).getWid())) && ((balls.get(in1).getStx() + balls.get(in1).getWid() / 2) > (balls.get(in2).getStx())))) &&
+                            ((balls.get(in1).getSty() + balls.get(in1).getWid() / 2) < ((balls.get(in2).getSty() + balls.get(in2).getHei()))) && ((balls.get(in1).getSty() < (balls.get(in2).getSty() + balls.get(in2).getHei())) && (balls.get(in1).getSty() > (balls.get(in2).getSty()))) && (((balls.get(in1).getStx() + balls.get(in1).getWid()) > balls.get(in2).getStx()) && ((balls.get(in1).getStx() + balls.get(in1).getWid()) < (balls.get(in2).getStx() + balls.get(in2).getWid())))) {
+                        balls.get(in1).setYspeed(-(balls.get(in1).getYspeed()));
+                        balls.get(in2).setYspeed(-(balls.get(in2).getYspeed()));
+                        checker = true;
+                        bounces++;
+//                    }
                 }
             }
         }
@@ -75,21 +79,19 @@ public class MyPanel extends JPanel {
     public boolean checkLeft(int in1, int in2) {
         boolean checker = false;
         if (in1 != in2) {
-            if (((balls.get(in1).getStx()+balls.get(in1).getHei()/2) < (balls.get(in2).getStx()+balls.get(in2).getWid())) && ((balls.get(in1).getStx() < (balls.get(in2).getStx()+balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty()) < (balls.get(in2).getSty()+balls.get(in2).getHei())))){
-                balls.get(in1).setXspeed(-(balls.get(in1).getXspeed()));
-                balls.get(in2).setXspeed(-(balls.get(in2).getXspeed()));
-                checker = true;
-                bounces++;
-
-
-            } else {
-                if (((balls.get(in1).getStx() < (balls.get(in2).getStx()+balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty()+balls.get(in1).getHei()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty()+balls.get(in1).getHei()) < (balls.get(in2).getSty()+balls.get(in2).getHei())))){
+//            if (balls.get(in1).getLastHit() != balls.get(in2)) {
+                if (((balls.get(in1).getStx() + balls.get(in1).getHei() / 2) < (balls.get(in2).getStx() + balls.get(in2).getWid())) && ((balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty()) < (balls.get(in2).getSty() + balls.get(in2).getHei())))) {
                     balls.get(in1).setXspeed(-(balls.get(in1).getXspeed()));
                     balls.get(in2).setXspeed(-(balls.get(in2).getXspeed()));
                     checker = true;
                     bounces++;
-
-
+                } else {
+                    if (((balls.get(in1).getStx() < (balls.get(in2).getStx() + balls.get(in2).getWid())) && (balls.get(in1).getStx() > (balls.get(in2).getStx()))) && (((balls.get(in1).getSty() + balls.get(in1).getHei()) > (balls.get(in2).getSty())) && ((balls.get(in1).getSty() + balls.get(in1).getHei()) < (balls.get(in2).getSty() + balls.get(in2).getHei())))) {
+                        balls.get(in1).setXspeed(-(balls.get(in1).getXspeed()));
+                        balls.get(in2).setXspeed(-(balls.get(in2).getXspeed()));
+                        checker = true;
+                        bounces++;
+//                    }
                 }
             }
         }
@@ -152,8 +154,8 @@ public class MyPanel extends JPanel {
         // }
 
 
-        g.drawString("Bounces: "+ bounces, Main.frame.getWidth()/2,Main.frame.getHeight()/2);
-        g.setColor(Color.CYAN);
+//        g.drawString("Bounces: "+ bounces, Main.frame.getWidth()/2,Main.frame.getHeight()/2);
+//        g.setColor(Color.CYAN);
 
 
         //        xpol = new int[xss.size()];
