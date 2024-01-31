@@ -48,24 +48,51 @@ public class Ball {
     }
 
 
-
-
+    int lastWallTick = 0;
+    int i1 = 1;
+    int i2 = 1;
+    int i3 = 1;
+    int i4 = 1;
     public void checkIfWall(){
-        if ((stx+wid) >=  Main.frame.getWidth()){
-            yspeed = (int)(Math.random() * 20)-10;
-            xspeed = -xspeed;
+        if ((stx + wid) >= Main.frame.getWidth()) {
+                if (MyPanel.tick - lastWallTick != i1) {
+                    i1 = 1;
+                    lastWallTick = MyPanel.tick;
+                    yspeed = (int) (Math.random() * 20) - 10;
+                    xspeed = -xspeed;
+                } else {
+                   i1++;
+                }
         }
         if ((stx) <= 0){
-            yspeed = (int)(Math.random() * 20)-10;
-            xspeed = -xspeed;
+            if (MyPanel.tick - lastWallTick != i2) {
+                i2 = 1;
+                lastWallTick = MyPanel.tick;
+                yspeed = (int) (Math.random() * 20) - 10;
+                xspeed = -xspeed;
+            } else {
+                i2++;
+            }
         }
         if ((sty+hei) >= Main.frame.getHeight()){
-            xspeed = (int)(Math.random() * 20)-10;
-            yspeed = -yspeed;
+            if (MyPanel.tick - lastWallTick != i3) {
+                i3 = 1;
+                lastWallTick = MyPanel.tick;
+                xspeed = (int) (Math.random() * 20) - 10;
+                yspeed = -yspeed;
+            } else {
+                i3++;
+            }
         }
         if ((sty) <= 0){
-            xspeed = (int)(Math.random() * 20)-10;
-            yspeed = -yspeed;
+            if (MyPanel.tick - lastWallTick != i4) {
+                i4 = 1;
+                lastWallTick = MyPanel.tick;
+                xspeed = (int) (Math.random() * 20) - 10;
+                yspeed = -yspeed;
+            } else {
+                i4++;
+            }
         }
     }
 
